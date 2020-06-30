@@ -1,4 +1,3 @@
-var x =;
 const url = "http://mylogger.io/log"
 
 const log = (message) => {
