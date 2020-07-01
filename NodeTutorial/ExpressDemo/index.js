@@ -28,10 +28,9 @@ app.get("/api/courses", (req, res) => {
 app.post("/api/courses", (req, res) => {
   const result = validateCourse(req.body)
   if (result.error) {
-    res.status(400).send(result.error.details[0].message);
-    return;
+    return res.status(400).send(result.error.details[0].message);
   }
-  
+
   const course = {
     id: courses.length + 1,
     name: req.body.name,
@@ -44,13 +43,14 @@ app.post("/api/courses", (req, res) => {
 app.put("api/courses/:id", (req, res) => {
   // a) look up the course: if not existing, return 404 (= not found)
   const course = courses.find((c) => c.id === parseInt(req.params.id));
-  if (!course) res.status(404).send("This course was not found.");
-  
+  if (!course) {
+  return res.status(404).send("This course was not found.");
+  }
+
   // b) validate the course, if invalid return 400 (= bad request)
   const result = validateCourse(req.body)
   if (result.error) {
-    res.status(400).send(result.error.details[0].message);
-    return;
+    return res.status(400).send(result.error.details[0].message);
   }
 
   // c) else: update course and return to the client
@@ -67,9 +67,23 @@ function validateCourse(course) {
 
 app.get("/api/courses/:id", (req, res) => {
   const course = courses.find((c) => c.id === parseInt(req.params.id));
-  if (!course) res.status(404).send("This course was not found.");
+  if (!course) return res.status(404).send("This course was not found.");
   res.send(course);
 });
+
+app.delete('/api/courses/:id', (req, res) => {
+  // Look up the course, if not exists: return 404 
+  const course = courses.find((c) => c.id === parseInt(req.params.id));
+  if (!course) return res.status(404).send("This course was not found.");
+  
+  // else: delete
+  const index = courses.indexOf(course)
+  courses.splice(index, 1)
+
+  // return response to client
+  res.send(course)
+
+})
 
 //PORT: environment variable, set outside the file
 const port = process.env.PORT || 3000;
