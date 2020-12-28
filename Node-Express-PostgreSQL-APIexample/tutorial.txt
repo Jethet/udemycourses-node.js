@@ -4,3 +4,4 @@ node-postgres.com: collection of node.js odules for interfacing with a PostgreSQ
 
 npm init 
 npm install express pg 
+npm i nodemon  (add in package.json under "scripts" the line "start": "nodemon index.js",)
