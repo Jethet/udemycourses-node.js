@@ -1,0 +1,6 @@
+Tutorial NodeJS, Express & PostgreSQL -CRUD REST API example, by Tania Rascia.
+
+node-postgres.com: collection of node.js odules for interfacing with a PostgreSQL database.
+
+npm init 
+npm install express pg 
