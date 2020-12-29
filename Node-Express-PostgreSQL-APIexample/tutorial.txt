@@ -7,3 +7,4 @@ npm install express pg
 npm i nodemon  (add in package.json under "scripts" the line "start": "nodemon index.js",)
 
 Created database in PostgreSQL called rest_api_tutorial
+
