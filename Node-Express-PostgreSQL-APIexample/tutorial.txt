@@ -8,3 +8,11 @@ npm i nodemon  (add in package.json under "scripts" the line "start": "nodemon i
 
 Created database in PostgreSQL called rest_api_tutorial
 
+Created six queries for CRUD operations in queries.js:
+GET - /users - getUsers() 
+GET - /users/:id - getUserById()
+POST - /users - createUser()
+PUT - /users/:id - updateUser()
+DELETE - /users/:id - deleteUser()
+
+Exported routes and imported in index.js to make endpoint routes for all queries.

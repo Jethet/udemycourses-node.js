@@ -40,7 +40,7 @@ const createUser = (req, res) => {
       if (error) {
         throw error;
       }
-      res.status(201).send(`User added with id ${result.insertId}.`);
+      res.status(201).send(`User with name ${name} was added.`);
     }
   );
 };
